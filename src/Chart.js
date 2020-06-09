@@ -11,12 +11,15 @@ export default function Tbar() {
 	const [ isLoading, setLoading ] = useState(false);
 	const [ hasError, setError ] = useState(false);
 
+
 	const getData = async () => {
 		setLoading(true);
 		try {
 			const response = await fetch(
-				`http://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
+				`https://api.openweathermap.org/data/2.5/forecast?id=${id}&appid=${process.env.REACT_APP_API_KEY}&units=metric`
 			);
+			console.log("response", response);
+			
 			const json = await response.json();
 			setData(json);
 			setCity(json.city);
